@@ -2,7 +2,8 @@ version: '2'
 
 services:
   worksonmymachine:
-    image:
-      stevelasker/worksonmymachine:latest
+    build:
+      context: ..
+      dockerfile: app/dockerfile
     ports:
       - "80:80"

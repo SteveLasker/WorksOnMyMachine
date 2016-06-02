@@ -138,6 +138,9 @@ $VerbosePreference = "Continue"
 # Docker Working Directory for validating volume mapping. Should be in sync with Dockerfile and Docker.props.
 $DockerWorkingDirectory = "/app/"
 
+# The project name can only contain alphanumeric charecters, replace everything else with empty string
+$ProjectName = $ProjectName -replace "[^a-zA-Z0-9]", ""
+
 # Calculate the name of the image created by the compose file
 $ImageName = "${ProjectName}_worksonmymachine"
 
@@ -278,7 +281,9 @@ function Run () {
         Write-Error "Failed to start the container(s)"
     }
 
-    OpenSite
+    if ($OpenSite) {
+        OpenSite
+    }
 }
 
 # Opens the remote site
@@ -291,9 +296,7 @@ function OpenSite () {
         WaitForUrl $uri
 
         # Open the site.
-        if ($OpenSite) {
-            Start-Process $uri
-        }
+        Start-Process $uri
     }
     else {
         # Give the container 10 seconds to get ready
@@ -359,9 +362,7 @@ function Refresh () {
     PublishProject
 
     # Restart the process
-    $shellCommand = "docker exec -i $containerId $Command"
-    Write-Verbose "Executing: $shellCommand"
-    Invoke-Expression $shellCommand
+    Exec
 }
 
 # Publishes the project
