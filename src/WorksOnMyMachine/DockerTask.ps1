@@ -220,6 +220,7 @@ function Build () {
 
     # Call docker-compose on the published project to build the images
     $shellCommand = "docker-compose -f '$composeFilePath' -p $ProjectName build $buildArgs"
+    Write-Verbose "Path: $Env:Path"
     Write-Verbose "Executing: $shellCommand"
     Invoke-Expression "cmd /c $shellCommand `"2>&1`""
     if ($LastExitCode -ne 0) {
@@ -464,7 +465,7 @@ $buildContext = Join-Path $dockerBinFolder $Environment
 # The folder to publish the app to
 $pubPath = Join-Path $buildContext "app"
 # The folder to install the debugger to
-$clrDbgPath = Join-Path $buildContext "clrdbg"
+$clrDbgPath = Join-Path $pubPath "clrdbg"
 
 Write-Verbose "Setting: `$env:CLRDBG_VERSION = `"$ClrDebugVersion`""
 $env:CLRDBG_VERSION = "$ClrDebugVersion"
