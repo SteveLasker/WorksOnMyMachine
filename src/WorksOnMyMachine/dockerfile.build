@@ -1,0 +1,4 @@
+﻿FROM microsoft/dotnet:1.0.0-rc2-core
+# early prototype for doing app builds in a containerized CI/CD soltuion
+RUN dotnet restore
+RUN dotnet publish -c release -o app/
