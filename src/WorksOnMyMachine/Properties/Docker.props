@@ -9,11 +9,6 @@
         (Note: you need to restart VS after changing this property) -->
     <DockerMachineName Condition=" '$(DockerMachineName)'=='' "></DockerMachineName>
 
-    <!-- Use this property to change the port exposed by the container (Note: you need to restart VS after changing this property) -->
-    <DockerContainerPort Condition=" '$(DockerContainerPort)'=='' ">$ContainerPort$</DockerContainerPort>
-    <!-- Use this property to change the port exposed by the host (Note: you need to restart VS after changing this property) -->
-    <DockerHostPort Condition=" '$(DockerHostPort)'=='' ">$HostPort$</DockerHostPort>
-
     <!-- Use these properties to configure the process that will be started by the debugger in the container -->
     <DockerDebugStartProcess>dotnet</DockerDebugStartProcess>
     <DockerDebugStartArgs>/app/WorksOnMyMachine.dll</DockerDebugStartArgs>
