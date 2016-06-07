@@ -2,11 +2,11 @@ version: '2'
 
 services:
   worksonmymachine:
-    build:
-      context: .
-      dockerfile: dockerfile.debug
+    image:
+      stevelasker/worksonmymachine:debug-latest
     environment:
       - REMOTE_DEBUGGING=${REMOTE_DEBUGGING}
+      - ASPNETCORE_ENVIRONMENT=Development
     ports:
       - "80:80"
     volumes:
