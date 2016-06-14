@@ -25,24 +25,24 @@ public IActionResult About()
 {
     string hostName;
     // Will only work on Windows
-    //hostName = Environment.GetEnvironmentVariable("COMPUTERNAME");
+    hostName = Environment.GetEnvironmentVariable("COMPUTERNAME");
 
     // Works on both Windows and Linux
-    hostName = Environment.GetEnvironmentVariable("COMPUTERNAME") ??
-                        Environment.GetEnvironmentVariable("HOSTNAME");
+    //hostName = Environment.GetEnvironmentVariable("COMPUTERNAME") ??
+    //                    Environment.GetEnvironmentVariable("HOSTNAME");
 
     ViewData["HOSTNAME"] = hostName;
 
 
     TimeZoneInfo tzInfo = null;
     // Will only work on Windows
-    //tzInfo = TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time");
+    tzInfo = TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time");
 
     // Works on both Windows and Linux
-    if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-        tzInfo = TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time");
-    else
-        tzInfo = TimeZoneInfo.FindSystemTimeZoneById("America/New_York");
+    //if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+    //    tzInfo = TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time");
+    //else
+    //    tzInfo = TimeZoneInfo.FindSystemTimeZoneById("America/New_York");
 
     ViewData["TZINFO"] = tzInfo;
 
