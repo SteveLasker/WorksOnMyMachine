@@ -2,8 +2,9 @@ version: '2'
 
 services:
   worksonmymachine:
+    image: username/worksonmymachine
     build:
-      context: ..
-      dockerfile: app/dockerfile
+      context: .
+      dockerfile: Dockerfile
     ports:
       - "80:80"

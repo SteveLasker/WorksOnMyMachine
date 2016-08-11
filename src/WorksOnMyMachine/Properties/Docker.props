@@ -5,8 +5,8 @@
          otherwise the target SetDockerProps will set it based on $(ActiveDebugProfile) -->
     <!--<DockerBuild Condition=" '$(DockerBuild)'=='' ">True</DockerBuild> -->
 
-    <!-- Use this property to change the docker host that is used by this project. Delete default, leaving the value blank for the Docker for Windows beta
-        (Note: you need to restart VS after changing this property) -->
+    <!-- Use this property to change the docker host that is used by this project. Leave the value blank for the Docker for Windows beta or change to your docker-machine's name
+         if using a host registered in docker-machine. (Note: you need to restart VS after changing this property) -->
     <DockerMachineName Condition=" '$(DockerMachineName)'=='' "></DockerMachineName>
 
     <!-- Use these properties to configure the process that will be started by the debugger in the container -->
